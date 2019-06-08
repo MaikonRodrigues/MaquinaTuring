@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorUm"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Digite a entrada"
+        android:textColor="@color/branco"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editEntrada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/capsule"
+        android:layout_marginStart="20dp"
+
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="30dp"
+        android:columnCount="20"
+        android:backgroundTint="@color/branco"
+        android:rowCount="1">
+
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/txtTela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="25dp"
+        android:gravity="center"
+        android:textColor="@color/branco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/capsule"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/branco"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="configurar Maquina" />
+
+    <Button
+        android:id="@+id/btnPP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/capsule"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/branco"
+        android:text="Passo a Passo" />
+
+</LinearLayout>
