@@ -2,12 +2,18 @@ package com.example.maikon.maquinaturing;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.maikon.maquinaturing.Adapters.ItemFitaAdapter;
+import com.example.maikon.maquinaturing.Classes.ElementoFita;
 import com.example.maikon.maquinaturing.Classes.Mt;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +23,18 @@ public class MainActivity extends AppCompatActivity {
 
     Mt maquina;
 
+    RecyclerView recyclerDesafios;
+    ElementoFita elementoFita;
+    List<ElementoFita> listElementoFita;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerDesafios = (RecyclerView) findViewById(R.id.my_recycler_view_listEnd);
+        recyclerDesafios.setHasFixedSize(true);
+
 
         maquina = new Mt();
 
@@ -52,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
                         "\n q1,1"   +
                         "\n Aceita,1,>" );
+
+                elementoFita.setValorElemento("0");
+                elementoFita.setPosicao(1);
+                listElementoFita.add(elementoFita);
+
+                ItemFitaAdapter adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this);
+                recyclerDesafios.setAdapter(adapter);
+
 
             }
         });

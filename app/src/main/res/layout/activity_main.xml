@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorUm"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
@@ -20,34 +20,44 @@
         android:id="@+id/editEntrada"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:background="@drawable/capsule"
         android:layout_marginStart="20dp"
-
-        android:inputType="number"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp" />
+        android:layout_marginEnd="20dp"
 
-    <GridLayout
+        android:background="@drawable/capsule"
+        android:gravity="center"
+        android:inputType="number" />
+
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="30dp"
-        android:columnCount="20"
-        android:backgroundTint="@color/branco"
-        android:rowCount="1">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view_listEnd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:foregroundGravity="center"
+            android:scrollbars="vertical" />
 
-    </GridLayout>
+    </HorizontalScrollView>
+
 
     <TextView
         android:id="@+id/txtTela"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text=""
-        android:textSize="25dp"
         android:gravity="center"
+        android:text=""
         android:textColor="@color/branco"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -63,10 +73,10 @@
         android:layout_marginBottom="25dp"
         android:background="@drawable/capsule"
         android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/branco"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:text="configurar Maquina" />
+        android:text="configurar Maquina"
+        android:textColor="@color/branco" />
 
     <Button
         android:id="@+id/btnPP"
@@ -74,7 +84,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/capsule"
         android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/branco"
-        android:text="Passo a Passo" />
+        android:text="Passo a Passo"
+        android:textColor="@color/branco" />
 
 </LinearLayout>
