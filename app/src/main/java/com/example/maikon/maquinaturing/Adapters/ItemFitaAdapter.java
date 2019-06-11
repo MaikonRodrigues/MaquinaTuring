@@ -34,13 +34,6 @@ public class ItemFitaAdapter extends RecyclerView.Adapter<ItemFitaAdapter.ItemFi
     public ItemFitaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View vista =  LayoutInflater.from(parent.getContext()).inflate(item_fita, parent, false);
-
-        final RecyclerView.LayoutParams layoutParams =
-                new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                );
-
-        vista.setLayoutParams(layoutParams);
         return new ItemFitaAdapter.ItemFitaHolder(vista);
     }
 
@@ -51,7 +44,7 @@ public class ItemFitaAdapter extends RecyclerView.Adapter<ItemFitaAdapter.ItemFi
       //  bebHolder.campoNome.setText(listDesafio.get(position).getNome());
       //  bebHolder.campoDuracao.setText(listDesafio.get(position).getDuracao());
 
-        itemFitaHolder.simboloDoItem.setText(listElementos.get(position).getValorElemento());
+        itemFitaHolder.simboloDoItem.setText(String.valueOf(listElementos.get(position).getValorElemento()));
 
 
     }
@@ -64,11 +57,11 @@ public class ItemFitaAdapter extends RecyclerView.Adapter<ItemFitaAdapter.ItemFi
     public class ItemFitaHolder extends RecyclerView.ViewHolder {
 
         TextView simboloDoItem;
-        CardView meuCard;
+
 
         public ItemFitaHolder(@NonNull View itemView) {
             super(itemView);
-            meuCard      = (CardView) itemView.findViewById(R.id.card_viewDesaf);
+
             simboloDoItem= (TextView) itemView.findViewById(R.id.txtItem);
 
         }

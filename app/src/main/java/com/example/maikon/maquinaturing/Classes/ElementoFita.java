@@ -2,19 +2,22 @@ package com.example.maikon.maquinaturing.Classes;
 
 public class ElementoFita {
 
-    String valorElemento;
+    char valorElemento;
     int posicao;
 
-    public ElementoFita(String valorElemento, int posicao) {
+    public ElementoFita() {
+    }
+
+    public ElementoFita(char valorElemento, int posicao) {
         this.valorElemento = valorElemento;
         this.posicao = posicao;
     }
 
-    public String getValorElemento() {
+    public char getValorElemento() {
         return valorElemento;
     }
 
-    public void setValorElemento(String valorElemento) {
+    public void setValorElemento(char valorElemento) {
         this.valorElemento = valorElemento;
     }
 
