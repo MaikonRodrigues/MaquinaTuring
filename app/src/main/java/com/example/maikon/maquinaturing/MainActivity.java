@@ -25,10 +25,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView txt;
+    TextView txt, labeltxt;
     Button btnRodar, btnPP;
     EditText entrada;
-    int i;
+    int i, flag;
     char[] entradasArray = null;
     Mt maquina;
     CardView cabecote; RelativeLayout cabecoteLayout;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        flag = 0;
         cabecote = (CardView) findViewById(R.id.card_viewCabFita);
         cabecoteLayout = (RelativeLayout)findViewById(R.id.layout_cabecote);
         recyclerListElement = (RecyclerView) findViewById(R.id.my_recycler_view_listEnd);
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         maquina = new Mt();
 
         txt = (TextView) findViewById(R.id.txtTela);
+        labeltxt = (TextView) findViewById(R.id.labeltxt);
         btnRodar = (Button) findViewById(R.id.btn);
         entrada = (EditText) findViewById(R.id.editEntrada);
         btnPP = (Button) findViewById(R.id.btnPP);
@@ -59,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
         btnRodar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 btnPP.setVisibility(View.VISIBLE);
+                btnRodar.setVisibility(View.INVISIBLE);
+                entrada.setVisibility(View.INVISIBLE);
+                labeltxt.setVisibility(View.INVISIBLE);
                 maquina.setFita(entrada.getText().toString());
 
                 maquina.compilar("init: q0" + "\n accept: Aceita" + // Configurando estado aceitacao e rejeicao
@@ -91,15 +96,11 @@ public class MainActivity extends AppCompatActivity {
                     elementoFita.setValorElemento(entradasArray[i]);
                     elementoFita.setPosicao(1);
                     listElementoFita.add(elementoFita);
+                    flag = i;
                 }
-
-
 
                 ItemFitaAdapter adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this);
                 recyclerListElement.setAdapter(adapter);
-
-
-
 
             }
         });
@@ -107,15 +108,19 @@ public class MainActivity extends AppCompatActivity {
         btnPP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               
+                Toast.makeText(MainActivity.this, "flag = "+flag+" entrada n = "+entrada.length(), Toast.LENGTH_SHORT).show();
                 cabecoteLayout.setHorizontalGravity(Gravity.getAbsoluteGravity(1, Gravity.RIGHT));
                 maquina.rodar();
-                txt.setText("Estado Atual: "+(maquina.estadoAtual)+
-                     "\n Número de Passos: "+ maquina.getPassos());
+                txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
-                if (maquina.estadoAtual.equals("Aceita")){
+                if (maquina.estadoAtual.equals("Aceita") && flag < entrada.length()){
+                   flag++;
+                }
+                else if(flag == entrada.length()){
                     btnPP.setVisibility(View.INVISIBLE);
-
+                    btnRodar.setVisibility(View.VISIBLE);
+                    entrada.setVisibility(View.VISIBLE);
+                    labeltxt.setVisibility(View.VISIBLE);
                 }
             }
         });
