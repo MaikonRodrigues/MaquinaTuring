@@ -6,29 +6,38 @@
     android:gravity="center">
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_viewDesaf"
+        android:id="@+id/card_viewCabFita"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
         android:focusable="true"
-        card_view:cardBackgroundColor="@color/azul"
+        card_view:cardBackgroundColor="@color/azul2"
         card_view:cardCornerRadius="3dp"
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
 
-        <TextView
-            android:id="@+id/txtItem"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="5dp"
-            android:text="U"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="25dp" />
+            android:gravity="center"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_esquerdabaixo" />
+
+            <TextView
+                android:id="@+id/txtItemKbc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="q0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25dp"
+                android:textColor="@color/branco"/>
+
+        </LinearLayout>
 
 
     </android.support.v7.widget.CardView>

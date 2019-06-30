@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.maikon.maquinaturing.Adapters.ItemFitaAdapter;
+import com.example.maikon.maquinaturing.Adapters.ItemKbcAdapter;
 import com.example.maikon.maquinaturing.Classes.ElementoFita;
 import com.example.maikon.maquinaturing.Classes.Mt;
 
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     int i, flag;
     char[] entradasArray = null;
     Mt maquina;
-    CardView cabecote; RelativeLayout cabecoteLayout;
-    RecyclerView recyclerListElement;
+    RelativeLayout cabecoteLayout;
+    RecyclerView recyclerListElement, recyclerListKbc;
     ElementoFita elementoFita;
     List<ElementoFita> listElementoFita;
 
@@ -41,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         flag = 0;
-        cabecote = (CardView) findViewById(R.id.card_viewCabFita);
-        cabecoteLayout = (RelativeLayout)findViewById(R.id.layout_cabecote);
+        recyclerListKbc  = (RecyclerView) findViewById(R.id.my_recycler_view_cab_fita);
         recyclerListElement = (RecyclerView) findViewById(R.id.my_recycler_view_listEnd);
         //recyclerDesafios.setHasFixedSize(true);
         recyclerListElement.setLayoutManager(new LinearLayoutManager(MainActivity.this ,LinearLayoutManager.HORIZONTAL, false));
+        recyclerListKbc.setLayoutManager(new LinearLayoutManager(MainActivity.this ,LinearLayoutManager.HORIZONTAL, false));
 
         listElementoFita = new ArrayList<ElementoFita>();
 
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         entrada = (EditText) findViewById(R.id.editEntrada);
         btnPP = (Button) findViewById(R.id.btnPP);
         btnPP.setVisibility(View.INVISIBLE);
+
         btnRodar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,9 +100,10 @@ public class MainActivity extends AppCompatActivity {
                     listElementoFita.add(elementoFita);
                     flag = i;
                 }
-
+                ItemKbcAdapter adapter2 = new ItemKbcAdapter(listElementoFita, MainActivity.this);
                 ItemFitaAdapter adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this);
                 recyclerListElement.setAdapter(adapter);
+                recyclerListKbc.setAdapter(adapter2);
 
             }
         });
