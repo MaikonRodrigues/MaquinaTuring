@@ -26,8 +26,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView txt, labeltxt;
-    Button btnRodar, btnPP;
+    TextView txt, labeltxt;                             ItemKbcAdapter adapter2, adapterKbc;
+    Button btnRodar, btnPP;                             ItemFitaAdapter adapter, adapterFita;
     EditText entrada;
     int i, flag;
     char[] entradasArray = null;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         flag = 0;
         recyclerListKbc  = (RecyclerView) findViewById(R.id.my_recycler_view_cab_fita);
         recyclerListElement = (RecyclerView) findViewById(R.id.my_recycler_view_listEnd);
@@ -58,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
         entrada = (EditText) findViewById(R.id.editEntrada);
         btnPP = (Button) findViewById(R.id.btnPP);
         btnPP.setVisibility(View.INVISIBLE);
+
+        // Povoando as fitas
+        startFita();
+
 
         btnRodar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,10 +105,12 @@ public class MainActivity extends AppCompatActivity {
                     listElementoFita.add(elementoFita);
                     flag = i;
                 }
-                ItemKbcAdapter adapter2 = new ItemKbcAdapter(listElementoFita, MainActivity.this);
-                ItemFitaAdapter adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this);
+                adapter2 = new ItemKbcAdapter(listElementoFita, MainActivity.this);
+                adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this);
                 recyclerListElement.setAdapter(adapter);
                 recyclerListKbc.setAdapter(adapter2);
+
+
 
             }
         });
@@ -131,6 +138,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void startFita(){
+
+            // Crio dois objeto do tipo ElementoFita
+        ElementoFita elementoFitaInic;
+        ElementoFita elementoCabInic;
+            // Crio duas listas de elementos de Fita
+        List<ElementoFita> listElementoFitaInit = new ArrayList<ElementoFita>();
+        List<ElementoFita> listElementoCab = new ArrayList<ElementoFita>();
+            // Laço para povoar as listas
+        int j;
+        for (j = 0; j < 10 ; j++){
+                // Crio o objeto
+            elementoCabInic  = new ElementoFita();
+            elementoFitaInic = new ElementoFita();
+                // set os valores dos elementos
+            elementoFitaInic.setValorElemento(' ');
+            elementoFitaInic.setPosicao(j);
+
+            elementoCabInic.setValorElemento('U');
+            elementoCabInic.setPosicao(j);
+
+            listElementoFitaInit.add(elementoCabInic);
+            listElementoCab.add(elementoFitaInic);
+
+        }
+        adapterKbc = new ItemKbcAdapter(listElementoCab, MainActivity.this);
+        adapterFita = new ItemFitaAdapter(listElementoFitaInit, MainActivity.this);
+        recyclerListElement.setAdapter(adapterFita);
+        recyclerListKbc.setAdapter(adapterKbc);
+
+    }
 
 
 
