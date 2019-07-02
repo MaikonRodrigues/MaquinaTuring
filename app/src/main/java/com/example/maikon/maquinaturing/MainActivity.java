@@ -1,11 +1,14 @@
 package com.example.maikon.maquinaturing;
 
+import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -113,7 +116,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                maquina.rodar();        
+                maquina.rodar();
+
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
+                    // seta a posicao do scrow
+                staggeredGridLayoutManager.scrollToPosition(3);
+                recyclerListElement.setLayoutManager(staggeredGridLayoutManager);
 
                 txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
@@ -133,6 +141,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
     public void startFita(){
