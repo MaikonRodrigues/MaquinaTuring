@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
     TextView txt, labeltxt;                             ItemKbcAdapter adapter2, adapterKbc;
     Button btnRodar, btnPP;                             ItemFitaAdapter adapter, adapterFita;
-    EditText entrada;
-    int i, flag;
-    char[] entradasArray = null;
-    Mt maquina;
-    RelativeLayout cabecoteLayout;
-    RecyclerView recyclerListElement, recyclerListKbc;
-    ElementoFita elementoFita;
-    List<ElementoFita> listElementoFita;
+    EditText entrada;                                   Mt maquina;
+    int i, flag;                                        ScrollView scrollView;
+    char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
+    ElementoFita elementoFita;                          List<ElementoFita> listElementoFita;
+    View mView;
+
+    float lastScrollX;
+    float lastScrollY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +50,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerListElement.setLayoutManager(new LinearLayoutManager(MainActivity.this ,LinearLayoutManager.HORIZONTAL, false));
         recyclerListKbc.setLayoutManager(new LinearLayoutManager(MainActivity.this ,LinearLayoutManager.HORIZONTAL, false));
 
-        listElementoFita = new ArrayList<ElementoFita>();
+        listElementoFita = new ArrayList<ElementoFita>();        maquina = new Mt();
 
-        maquina = new Mt();
+        txt = (TextView) findViewById(R.id.txtTela);             entrada = (EditText) findViewById(R.id.editEntrada);
+        labeltxt = (TextView) findViewById(R.id.labeltxt);       btnPP = (Button) findViewById(R.id.btnPP);
+        btnRodar = (Button) findViewById(R.id.btn);              btnPP.setVisibility(View.INVISIBLE);
 
-        txt = (TextView) findViewById(R.id.txtTela);
-        labeltxt = (TextView) findViewById(R.id.labeltxt);
-        btnRodar = (Button) findViewById(R.id.btn);
-        entrada = (EditText) findViewById(R.id.editEntrada);
-        btnPP = (Button) findViewById(R.id.btnPP);
-        btnPP.setVisibility(View.INVISIBLE);
-
-        // Povoando as fitas
+        // configurando a fita vazia
         startFita();
 
 
@@ -68,11 +64,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                btnPP.setVisibility(View.VISIBLE);
-                btnRodar.setVisibility(View.INVISIBLE);
+                btnPP.setVisibility(View.VISIBLE);          labeltxt.setVisibility(View.INVISIBLE);
+                btnRodar.setVisibility(View.INVISIBLE);     maquina.setFita(entrada.getText().toString());
                 entrada.setVisibility(View.INVISIBLE);
-                labeltxt.setVisibility(View.INVISIBLE);
-                maquina.setFita(entrada.getText().toString());
 
                 maquina.compilar("init: q0" + "\n accept: Aceita" + // Configurando estado aceitacao e rejeicao
                         "\n" +
@@ -118,12 +112,14 @@ public class MainActivity extends AppCompatActivity {
         btnPP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "flag = "+flag+" entrada n = "+entrada.length(), Toast.LENGTH_SHORT).show();
-                cabecoteLayout.setHorizontalGravity(Gravity.getAbsoluteGravity(1, Gravity.RIGHT));
-                maquina.rodar();
+
+                maquina.rodar();        
+
                 txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
                 if (maquina.estadoAtual.equals("Aceita") && flag < entrada.length()){
+                    // Limpando a fita
+                    startFita();
                    flag++;
                 }
                 else if(flag == entrada.length()){
@@ -171,6 +167,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void movDir(View v) {
+
+        lastScrollX = mView.getScrollX();
+        lastScrollY = mView.getScrollY();
+        lastScrollY += 0.0;
+        lastScrollX += 5.0;
+        mView.setX(lastScrollX);
+        mView.setY(lastScrollY);
+        mView.invalidate();
+
+    }
+    public void movEsc(View v) {
+
+        lastScrollX = mView.getScrollX();
+        lastScrollY = mView.getScrollY();
+        lastScrollY += 0.0;
+        lastScrollX -= 5.0;
+        mView.setX(lastScrollX);
+        mView.setY(lastScrollY);
+        mView.invalidate();
+
+    }
 
 
 }
