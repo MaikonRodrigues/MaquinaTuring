@@ -1,6 +1,7 @@
 package com.example.maikon.maquinaturing;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,10 +37,8 @@ public class MainActivity extends AppCompatActivity {
     int i, flag;                                        ScrollView scrollView;
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
     ElementoFita elementoFita;                          List<ElementoFita> listElementoFita, listElementoKbcFita;
-    View mView;
+    View mView;                                         Intent intent;
 
-    float lastScrollX;
-    float lastScrollY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btnRodar = (Button) findViewById(R.id.btn);              btnPP.setVisibility(View.INVISIBLE);
 
         // configurando a fita vazia
-        startFita();
+        fitaConfInicial();
 
 
         btnRodar.setOnClickListener(new View.OnClickListener() {
@@ -122,23 +121,22 @@ public class MainActivity extends AppCompatActivity {
 
                 maquina.rodar();
 
-                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
-                    // seta a posicao do scrow
-                staggeredGridLayoutManager.scrollToPosition(3);
-                recyclerListElement.setLayoutManager(staggeredGridLayoutManager);
-
                 txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
+                if (btnPP.getText().equals("reiniciar")){
+                    intent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+
                 if (maquina.estadoAtual.equals("Aceita") && flag < entrada.length()){
-                    // Limpando a fita
-                    startFita();
+                    btnPP.setText("reiniciar");
                    flag++;
                 }
                 else if(flag == entrada.length()){
-                    btnPP.setVisibility(View.INVISIBLE);
-                    btnRodar.setVisibility(View.VISIBLE);
-                    entrada.setVisibility(View.VISIBLE);
-                    labeltxt.setVisibility(View.VISIBLE);
+                    //  configurando os intens da tela (botoes e labels)
+                    btnPP.setVisibility(View.INVISIBLE);                    btnRodar.setVisibility(View.VISIBLE);
+                    entrada.setVisibility(View.VISIBLE);                    labeltxt.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -146,11 +144,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void moveScroll(int position){
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
+        // seta a posicao do scrow
+        staggeredGridLayoutManager.scrollToPosition(position);
+        recyclerListElement.setLayoutManager(staggeredGridLayoutManager);
+    }
 
-
-
-    public void startFita(){
-
+    public void fitaConfInicial(){
             // Crio dois objeto do tipo ElementoFita
         ElementoFita elementoFitaInic;
         ElementoFita elementoCabInic;

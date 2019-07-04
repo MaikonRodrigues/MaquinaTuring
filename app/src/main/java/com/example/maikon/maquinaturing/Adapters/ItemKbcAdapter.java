@@ -48,16 +48,10 @@ public class ItemKbcAdapter extends RecyclerView.Adapter<ItemKbcAdapter.ItemFita
 
       // itemFitaHolder.simboloDoItem.setText(String.valueOf(listElementos.get(position).getValorElemento()));
 
-            /* seta como invisivel os itens > que 0
-        if (position > 0) {
+        if (listElementos.get(position).isVisivel() == false){
             limpaItem(itemFitaHolder);
         }
-        */
-            if (listElementos.get(position).isVisivel() == false){
-                limpaItem(itemFitaHolder);
-            }
-            //pegando posicao do item na lista
-        itemFitaHolder.position = position;
+
 
     }
 
@@ -84,7 +78,6 @@ public class ItemKbcAdapter extends RecyclerView.Adapter<ItemKbcAdapter.ItemFita
 
         TextView simboloDoItem;         ImageView seta;
         CardView card_viewCabFita;
-        int position;
 
         public ItemFitaHolder(@NonNull View itemView) {
             super(itemView);
