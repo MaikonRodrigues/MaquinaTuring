@@ -4,13 +4,15 @@ public class ElementoFita {
 
     char valorElemento;
     int posicao;
+    boolean visivel;
 
     public ElementoFita() {
     }
 
-    public ElementoFita(char valorElemento, int posicao) {
+    public ElementoFita(char valorElemento, int posicao, boolean visivel) {
         this.valorElemento = valorElemento;
         this.posicao = posicao;
+        this.visivel = visivel;
     }
 
     public char getValorElemento() {
@@ -27,5 +29,13 @@ public class ElementoFita {
 
     public void setPosicao(int posicao) {
         this.posicao = posicao;
+    }
+
+    public boolean isVisivel() {
+        return visivel;
+    }
+
+    public void setVisivel(boolean visivel) {
+        this.visivel = visivel;
     }
 }

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     EditText entrada;                                   Mt maquina;
     int i, flag;                                        ScrollView scrollView;
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
-    ElementoFita elementoFita;                          List<ElementoFita> listElementoFita;
+    ElementoFita elementoFita;                          List<ElementoFita> listElementoFita, listElementoKbcFita;
     View mView;
 
     float lastScrollX;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerListKbc.setLayoutManager(new LinearLayoutManager(MainActivity.this ,LinearLayoutManager.HORIZONTAL, false));
 
         listElementoFita = new ArrayList<ElementoFita>();        maquina = new Mt();
+        listElementoKbcFita = new ArrayList<ElementoFita>();
 
         txt = (TextView) findViewById(R.id.txtTela);             entrada = (EditText) findViewById(R.id.editEntrada);
         labeltxt = (TextView) findViewById(R.id.labeltxt);       btnPP = (Button) findViewById(R.id.btnPP);
@@ -93,16 +94,19 @@ public class MainActivity extends AppCompatActivity {
                 String strings = entrada.getText().toString();
                 entradasArray = strings.toCharArray();
 
-                // laco para add os itens da entrada
-                //
+                // laco para add os itens da entrada na lista de itens da fita
                 for (i = 0; i < (entrada.getText().toString().length()); i++){
                     elementoFita = new ElementoFita();
                     elementoFita.setValorElemento(entradasArray[i]);
-                    elementoFita.setPosicao(1);
+                    elementoFita.setPosicao(i);
+                    if (i > 0) elementoFita.setVisivel(false); else elementoFita.setVisivel(true);
                     listElementoFita.add(elementoFita);
+                    listElementoKbcFita.add(elementoFita);
                     flag = i;
                 }
-                adapter2 = new ItemKbcAdapter(listElementoFita, MainActivity.this);
+
+
+                adapter2 = new ItemKbcAdapter(listElementoKbcFita, MainActivity.this);
                 adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this);
                 recyclerListElement.setAdapter(adapter);
                 recyclerListKbc.setAdapter(adapter2);
@@ -177,28 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void movDir(View v) {
 
-        lastScrollX = mView.getScrollX();
-        lastScrollY = mView.getScrollY();
-        lastScrollY += 0.0;
-        lastScrollX += 5.0;
-        mView.setX(lastScrollX);
-        mView.setY(lastScrollY);
-        mView.invalidate();
-
-    }
-    public void movEsc(View v) {
-
-        lastScrollX = mView.getScrollX();
-        lastScrollY = mView.getScrollY();
-        lastScrollY += 0.0;
-        lastScrollX -= 5.0;
-        mView.setX(lastScrollX);
-        mView.setY(lastScrollY);
-        mView.invalidate();
-
-    }
 
 
 }
