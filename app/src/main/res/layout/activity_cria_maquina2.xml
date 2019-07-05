@@ -10,11 +10,54 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Configure a maquina"
-        android:textSize="25dp"
-        />
+        android:animateLayoutChanges="true"
+        android:background="@color/colorUm"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/my_recycler_view_conf_entra"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="15dp"
+            android:foreground="?android:attr/selectableItemBackground" />
+
+
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/capsule"
+            android:backgroundTint="@color/colorPrimary"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Criar novo esrado" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/capsule"
+            android:backgroundTint="@color/colorPrimary"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="finalisar configuração" />
+    </LinearLayout>
+
 
 </LinearLayout>

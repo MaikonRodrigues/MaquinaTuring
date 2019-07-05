@@ -1,23 +1,45 @@
 package com.example.maikon.maquinaturing.Classes;
 
-public class Configuracao {
-    String aoLer, escreve, vaiPara;
+/*
+ *      Classe para instanciar objetos que conterá as configurações da entrada
+ */
 
-    public Configuracao(String aoLer, String escreve, String vaiPara) {
-        this.aoLer = aoLer;
+public class Configuracao {
+    String simbolo, ler, escreve, vaiPara, dirOuEsq;
+
+    public Configuracao(String simbolo, String ler, String escreve, String vaiPara, String dirOuEsq) {
+        this.simbolo = simbolo;
+        this.ler = ler;
         this.escreve = escreve;
         this.vaiPara = vaiPara;
+        this.dirOuEsq = dirOuEsq;
     }
 
     public Configuracao() {
     }
 
-    public String getAoLer() {
-        return aoLer;
+    public String getDirOuEsq() {
+        return dirOuEsq;
     }
 
-    public void setAoLer(String aoLer) {
-        this.aoLer = aoLer;
+    public void setDirOuEsq(String dirOuEsq) {
+        this.dirOuEsq = dirOuEsq;
+    }
+
+    public String getSimbolo() {
+        return simbolo;
+    }
+
+    public void setSimbolo(String simbolo) {
+        this.simbolo = simbolo;
+    }
+
+    public String getler() {
+        return ler;
+    }
+
+    public void setler(String aoLer) {
+        this.ler = aoLer;
     }
 
     public String getEscreve() {

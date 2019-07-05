@@ -1,18 +1,22 @@
 package com.example.maikon.maquinaturing.Classes;
 
-public class Estado {
-    String nome, entrada;
+import java.util.List;
 
-    public Estado(String nome, String entrada) {
-        this.nome = nome;
-        this.entrada = entrada;
+public class Estado {
+    String nome, alfabeto;
+
+                    // lista contem simbolo, ao ler, escreve, vai para, dir ou esq
+    public Estado(List<String> vetorEntrada, String alfabeto) {
+
+        this.nome = vetorEntrada.get(1);
+        this.alfabeto = alfabeto;
 
         int i;
-        for (i = 0; i < entrada.length(); i++){
+        for (i = 0; i < alfabeto.length(); i++){
             Configuracao configuracao = new Configuracao();
         }
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -21,11 +25,11 @@ public class Estado {
         this.nome = nome;
     }
 
-    public String getEntrada() {
-        return entrada;
+    public String getAlfabeto() {
+        return alfabeto;
     }
 
     public void setEntrada(String entrada) {
-        this.entrada = entrada;
+        this.alfabeto = entrada;
     }
 }
