@@ -32,7 +32,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     TextView txt, labeltxt;                             ItemKbcAdapter adapter2, adapterKbc;
-    Button btnRodar, btnPP;                             ItemFitaAdapter adapter, adapterFita;
+    Button btnRodar, btnPP, kkk;                             ItemFitaAdapter adapter, adapterFita;
     EditText entrada;                                   Mt maquina;
     int i, flag;                                        ScrollView scrollView;
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        flag = 0;
+        flag = 0;   kkk = (Button)findViewById(R.id.kkk);
         recyclerListKbc  = (RecyclerView) findViewById(R.id.my_recycler_view_cab_fita);
         recyclerListElement = (RecyclerView) findViewById(R.id.my_recycler_view_listEnd);
         //recyclerDesafios.setHasFixedSize(true);
@@ -61,7 +61,13 @@ public class MainActivity extends AppCompatActivity {
 
         // configurando a fita vazia
         fitaConfInicial();
-
+        kkk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(MainActivity.this, CriaMaquina2Activity.class);
+                startActivity(it);
+            }
+        });
 
         btnRodar.setOnClickListener(new View.OnClickListener() {
             @Override

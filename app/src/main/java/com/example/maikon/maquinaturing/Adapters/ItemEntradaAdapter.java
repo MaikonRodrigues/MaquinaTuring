@@ -64,7 +64,7 @@ public class ItemEntradaAdapter extends RecyclerView.Adapter<ItemEntradaAdapter.
             ler = (TextView) itemView.findViewById(R.id.txtLer);
             escreve  = (TextView) itemView.findViewById(R.id.txtEscreve);
             vaiPara = (TextView) itemView.findViewById(R.id.txtVaiPara);
-            dirOuEsq = (TextView) itemView.findViewById(R.id.txtDirouEsq);
+           // dirOuEsq = (TextView) itemView.findViewById(R.id.txtDirouEsq);
 
 
 

@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center">
-
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view_it_static"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:focusable="true"
-        card_view:cardBackgroundColor="@color/azul"
-        card_view:cardCornerRadius="3dp"
-        card_view:cardElevation="5dp"
-        card_view:cardUseCompatPadding="true">
-
-        <TextView
-            android:id="@+id/txt_it_static"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:text="q1"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="25dp" />
-
-
-    </android.support.v7.widget.CardView>
+    android:gravity="center"
+    android:orientation="horizontal">
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view_conf_entr"
@@ -43,8 +20,9 @@
         card_view:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -52,58 +30,133 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:gravity="center"
                 android:layout_margin="5dp"
-                android:text="insira a configuração desse estado"
+                android:gravity="center"
+                android:text="Insira a configuração  do estado q1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
+                android:textSize="19dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/_valor_lido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:text="Ler :          "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-            <EditText
-                android:id="@+id/txtLer"
-                android:layout_width="66dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/capsule"
-                android:inputType="number" />
-
-            <TextView
-                android:id="@+id/_valor_escr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:text="Escrever :       "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="15dp" />
-
-            <EditText
-                android:id="@+id/txtEscreve"
-                android:layout_width="66dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/capsule"
-                android:inputType="number" />
-
-
-        </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/_valor_lido"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:text="Ao ler o valor : "
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/_valor_escr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:text="Escrever :       "
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:text="Vai para o proximo estado:"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/txtLer"
+                    android:layout_width="86dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/capsule"
+                     />
+
+                <EditText
+                    android:id="@+id/txtEscreve"
+                    android:layout_width="86dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/capsule"
+                    android:gravity="center"
+                     />
+
+                <EditText
+                    android:id="@+id/txtVaiPara"
+                    android:layout_width="86dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@drawable/capsule"
+                     />
+
+            </LinearLayout>
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
@@ -116,40 +169,54 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:gravity="center"
-                    android:text="Vai para :"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="15dp" />
-
-                <EditText
-                    android:id="@+id/txtVaiPara"
-                    android:layout_width="66dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/capsule"
-                    android:inputType="number" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
                     android:text="Movimento :  "
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="15dp" />
 
-                <EditText
-                    android:id="@+id/txtDirouEsq"
-                    android:layout_width="66dp"
+                <CheckBox
+                    android:id="@+id/checkBoxDireita"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/capsule"
-                    android:inputType="number" />
+                    android:layout_weight="1"
+                    android:text="Direita" />
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Esquerda" />
 
 
             </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/branco"
+                    android:background="@drawable/capsule"
+                    android:text="configurar" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/capsule"
+                    android:textColor="@color/branco"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="cancelar" />
+
+            </LinearLayout>
 
 
+
+        </LinearLayout>
 
 
     </android.support.v7.widget.CardView>
