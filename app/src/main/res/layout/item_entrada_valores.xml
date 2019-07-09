@@ -139,10 +139,10 @@
                     android:id="@+id/txtEscreve"
                     android:layout_width="86dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/capsule"
-                    android:gravity="center"
-                     />
+                    android:gravity="center" />
 
                 <EditText
                     android:id="@+id/txtVaiPara"
@@ -155,10 +155,10 @@
             </LinearLayout>
 
         </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -178,9 +178,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+
                     android:text="Direita" />
+
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/checkBoxEsq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -192,25 +194,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnConfigurar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:textColor="@color/branco"
                     android:background="@drawable/capsule"
-                    android:text="configurar" />
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="configurar"
+                    android:textColor="@color/branco" />
 
                 <Button
+                    android:id="@+id/btnCancelar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/capsule"
-                    android:textColor="@color/branco"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="cancelar" />
+                    android:text="cancelar"
+                    android:textColor="@color/branco" />
 
             </LinearLayout>
 

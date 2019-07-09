@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.maikon.maquinaturing.Classes.Configuracao;
@@ -56,15 +57,12 @@ public class ItemEntradaAdapter extends RecyclerView.Adapter<ItemEntradaAdapter.
 
     public class ItemFitaHolder extends RecyclerView.ViewHolder {
 
-        TextView ler, escreve, vaiPara, dirOuEsq;
+
+
 
 
         public ItemFitaHolder(@NonNull View itemView) {
             super(itemView);
-            ler = (TextView) itemView.findViewById(R.id.txtLer);
-            escreve  = (TextView) itemView.findViewById(R.id.txtEscreve);
-            vaiPara = (TextView) itemView.findViewById(R.id.txtVaiPara);
-           // dirOuEsq = (TextView) itemView.findViewById(R.id.txtDirouEsq);
 
 
 
