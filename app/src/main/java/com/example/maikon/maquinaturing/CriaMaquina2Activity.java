@@ -51,7 +51,6 @@ public class CriaMaquina2Activity extends AppCompatActivity {
                 dialog.findViewById(R.id.btnConfigurar).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if ( dialog.findViewById(R.id.checkBoxEsq).isEnabled()) Toast.makeText(CriaMaquina2Activity.this, "Direita selecionada", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -90,46 +89,9 @@ public class CriaMaquina2Activity extends AppCompatActivity {
                     }
                 });
 
-
-
-
-
-
             }
 
         });
-
 
     }
-
-
-
-/*
-    -----------------------------------------------------------------------------------------------------
-            AlertDialog alertDialog = new AlertDialog.Builder(CriaMaquina2Activity.this).create();
-            alertDialog.setTitle("Alert");
-            alertDialog.setMessage("Alert message to be shown");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-            alertDialog.show();
-    -----------------------------------------------------------------------------------------------------
-
-        AlertDialog alertDialog = new AlertDialog.Builder(AlertDialogActivity.this).create();
-        alertDialog.setTitle("Alert Dialog");
-        alertDialog.setMessage("Welcome to dear user.");
-        alertDialog.setIcon(R.drawable.welcome);
-
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        alertDialog.show();
-    ------------------------------------------------------------------------------------------------------
-        */
 }

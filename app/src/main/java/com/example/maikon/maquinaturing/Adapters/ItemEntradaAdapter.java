@@ -44,9 +44,9 @@ public class ItemEntradaAdapter extends RecyclerView.Adapter<ItemEntradaAdapter.
        // id = listDesafio.get(position).getId();
       //  bebHolder.campoNome.setText(listDesafio.get(position).getNome());
       //  bebHolder.campoDuracao.setText(listDesafio.get(position).getDuracao());
-
-        //itemFitaHolder.simboloDoItem.setText(String.valueOf(listConfiguracao.get(position).getValorElemento()));
-
+        itemFitaHolder.aoLer.setText(String.valueOf(listConfiguracao.get(position).getler()));
+        itemFitaHolder.escreve.setText(String.valueOf(listConfiguracao.get(position).getEscreve()));
+        itemFitaHolder.proxEstado.setText(String.valueOf(listConfiguracao.get(position).getVaiPara()));
 
     }
 
@@ -56,15 +56,13 @@ public class ItemEntradaAdapter extends RecyclerView.Adapter<ItemEntradaAdapter.
     }
 
     public class ItemFitaHolder extends RecyclerView.ViewHolder {
-
-
-
-
-
+        TextView aoLer, escreve, proxEstado;
         public ItemFitaHolder(@NonNull View itemView) {
             super(itemView);
 
-
+            aoLer       =   (TextView) itemView.findViewById(R.id.txtLer);
+            escreve     =   (TextView) itemView.findViewById(R.id.txtEscreve);
+            proxEstado  =   (TextView) itemView.findViewById(R.id.txtVaiPara);
 
         }
     }
