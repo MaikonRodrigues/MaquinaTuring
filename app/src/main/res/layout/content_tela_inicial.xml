@@ -21,16 +21,64 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:text="Digite o alfabeto da alfabeto finito de símbolos (Separe os com uma virgula)"
+        android:text="Digite o alfabeto  \n(Separe os simbolos com uma virgula)"
         android:textColor="@color/branco"
         android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/entradaSigma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/capsule" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Digite o alfabeto da fita \n(Separe os simbolos com uma virgula)"
+        android:textColor="@color/branco"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/entAlfFita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/capsule" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Digite o conjunto de estados (Q)\n(Separe os com uma virgula)"
+        android:textColor="@color/branco"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/entradaQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/capsule" />
+
+    <Button
+        android:id="@+id/btnProximo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/capsule"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="proximo"
+        android:textColor="@color/branco" />
 
 </LinearLayout>
