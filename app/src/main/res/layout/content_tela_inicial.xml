@@ -32,6 +32,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
+        android:gravity="center"
         android:background="@drawable/capsule" />
 
 
@@ -50,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:layout_marginEnd="10dp"
         android:background="@drawable/capsule" />
 
@@ -58,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:text="Digite o conjunto de estados (Q)\n(Separe os com uma virgula)"
+        android:text="Digite a quantidade de estados (Q)"
         android:textColor="@color/branco"
         android:textSize="20dp" />
 
@@ -69,6 +71,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:inputType="number"
         android:background="@drawable/capsule" />
 
     <Button
@@ -78,6 +82,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/capsule"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="tratamentoDeErros"
         android:text="proximo"
         android:textColor="@color/branco" />
 

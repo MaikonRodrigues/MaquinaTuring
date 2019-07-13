@@ -11,11 +11,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TelaInicial extends AppCompatActivity {
 
     EditText entradaSigma, entradaAlfabFita, entradaConjEsta;
-    Button btnProximo;  char[] letras ;   int i;
-    String palavra = "J,ava";
+    Button btnProximo;
+    String getEntradaSigma,getEstados, getAlfabFita;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,40 +30,59 @@ public class TelaInicial extends AppCompatActivity {
         entradaAlfabFita = (EditText)findViewById(R.id.entAlfFita);     btnProximo = (Button)findViewById(R.id.btnProximo);
         entradaSigma = (EditText)findViewById(R.id.entradaSigma);       entradaConjEsta = (EditText)findViewById(R.id.entradaQ);
 
-        btnProximo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-               letras = retirarVirgula(palavra);
-                Toast.makeText(TelaInicial.this,"retorno tamanho :  "+letras.length , Toast.LENGTH_SHORT).show();
-
-                for (i = 0; i == letras.length; i++){
-                    Toast.makeText(TelaInicial.this,"voltou "+i+" :" , Toast.LENGTH_SHORT).show();
-                        Toast.makeText(TelaInicial.this,"letra na posicao "+i+" :" + letras[i], Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-
     }
+    public void tratamentoDeErros(View view){
 
-    
-    public char[] retirarVirgula(String entrada){
-        char[] entradaSemVirgula = new char[entrada.length()], entradaComVirgula;
-        int j ;
+            // tratamento de entradas vazias
+        if (entradaAlfabFita.getText().toString().equals("") || entradaConjEsta.getText().toString().equals("")
+                || entradaSigma.getText().toString().equals("")){
+            Toast.makeText(TelaInicial.this,"Todos os campos são obrigatorios", Toast.LENGTH_SHORT).show();
+            return;
+        }else {
+                // Pegando valores de entrada
+            getEntradaSigma = entradaSigma.getText().toString();    getEstados = entradaConjEsta.getText().toString();
+            getAlfabFita = entradaAlfabFita.getText().toString();
+                // Verifica se a entrada e valida
+            //verificarEntradaCorreta();
+                // quebrando entrada em um vetor
+            char[] letras ;
+            letras = entradaSigma.getText().toString().toCharArray();
+                //retirando as virgulas
+            retiraVirgulas(letras);
 
-        entradaComVirgula = entrada.toCharArray();
-        Toast.makeText(TelaInicial.this,"entrou "+entradaComVirgula.length+" :" , Toast.LENGTH_SHORT).show();
-        for (j = 0; j > 5; j++){
-            Toast.makeText(TelaInicial.this,"entrou "+entradaComVirgula.length+" :" , Toast.LENGTH_SHORT).show();
-            if (entradaComVirgula[j] == ','){
-                // nao faz nada
-            }else {
-                entradaSemVirgula[j] = entradaComVirgula[j];
-            }
         }
-        Toast.makeText(TelaInicial.this,"Segundo toast "+entradaSemVirgula.length+" :" , Toast.LENGTH_SHORT).show();
-        return entradaSemVirgula;
+
     }
+
+    /*
+     *      Funcao recebe um vetor de caracteres e retira as virgulas
+     */
+    public char[] retiraVirgulas(char[] entrada){
+        char[] letrasSemVirgula = new char[entrada.length];
+        for (int i = 0; i <  entradaSigma.length(); i++){
+            if (entrada[i] == ','){
+                // nao faz nada
+            }else{
+                // salva vetor sem as virgulas
+                letrasSemVirgula[i] = entrada[i];
+                Toast.makeText(TelaInicial.this,"For posição "+entrada[i], Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        return letrasSemVirgula;
+    }
+
+    /*
+     *      A ideia dessa funcao e verificar se o usuario nao digitou uma entrada invalida
+     *      por exemplo dois caracteres seguidos sem virgula ou caracteres que nao pertecem
+     *      ao alfabeto
+     */
+    public void verificarEntradaCorreta(){
+        // Salva as entradas em vetor de caracteres
+        char[] sigma = new char[entradaSigma.length()], alfFita = new char[entradaSigma.length()];
+        // Quebrando a String em caracteres
+        sigma = entradaSigma.getText().toString().toCharArray();
+    }
+
 
 }
