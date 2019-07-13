@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.maikon.maquinaturing.Adapters.ItemEntradaAdapter;
 import com.example.maikon.maquinaturing.Classes.Configuracao;
+import com.example.maikon.maquinaturing.Classes.Mt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
         // Se for uma maquina pre configurada
         if (maquina.equals("1")){
             Toast.makeText(ConfiguraEstadosActivity.this, "configurada maquina: "+maquina, Toast.LENGTH_SHORT).show();
+            configurarMaquina("1");
         }else{
             String sigma = it.getStringExtra("Sigma");
             String alfabeto = it.getStringExtra("Alfabeto");
@@ -104,5 +106,38 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    /*
+     *  Metodo configura altomaticamente a maquina do tipo 1 (reconhece uma sequencia de 0s seguido de 1
+     */
+    private void configurarMaquina(String s) {
+
+        Configuracao q0 = new Configuracao();
+        q0.setestado_atual("q0");
+        q0.setler("0");
+        q0.setEscreve("0");
+        q0.setVaiPara("q1");
+
+
+        //-------------------------------------------------------------------------------------------------------
+        String stringDeConfiguracao;
+        stringDeConfiguracao = "init: q0" + "\n accept: Aceita" + // Configurando estado aceitacao e rejeicao
+                "\n" +
+
+                "\n q0,0"        +         //  estado atual, valor lido
+                "\n q1,0,>"      +        //  novo estado,  valor escrito, direcao
+                "\n"             +
+
+                "\n q0,1"        +
+                "\n Rejeita,1,>" +
+                "\n"             +
+
+                "\n q1,0"        +
+                "\n q1,0,>"      +
+                "\n"             +
+
+                "\n q1,1"   +
+                "\n Aceita,1,>";
     }
 }

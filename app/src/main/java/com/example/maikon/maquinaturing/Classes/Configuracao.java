@@ -5,10 +5,10 @@ package com.example.maikon.maquinaturing.Classes;
  */
 
 public class Configuracao {
-    String simbolo, ler, escreve, vaiPara, dirOuEsq;
+    String estado_atual, ler, escreve, vaiPara, dirOuEsq;
 
-    public Configuracao(String simbolo, String ler, String escreve, String vaiPara, String dirOuEsq) {
-        this.simbolo = simbolo;
+    public Configuracao(String estado_atual, String ler, String escreve, String vaiPara, String dirOuEsq) {
+        this.estado_atual = estado_atual;
         this.ler = ler;
         this.escreve = escreve;
         this.vaiPara = vaiPara;
@@ -26,12 +26,12 @@ public class Configuracao {
         this.dirOuEsq = dirOuEsq;
     }
 
-    public String getSimbolo() {
-        return simbolo;
+    public String getestado_atual() {
+        return estado_atual;
     }
 
-    public void setSimbolo(String simbolo) {
-        this.simbolo = simbolo;
+    public void setestado_atual(String estado_atual) {
+        this.estado_atual = estado_atual;
     }
 
     public String getler() {

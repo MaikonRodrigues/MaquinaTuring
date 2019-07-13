@@ -1,35 +1,30 @@
 package com.example.maikon.maquinaturing.Classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Estado {
-    String nome, alfabeto;
+    int numeroEstados;
+    char[] alfabeto;
+    List<Configuracao> configuracoes;
 
-                    // lista contem simbolo, ao ler, escreve, vai para, dir ou esq
-    public Estado(List<String> vetorEntrada, String alfabeto) {
-
-        this.nome = vetorEntrada.get(1);
+    public Estado(int numeroEstados, char[] alfabeto) {
+        this.numeroEstados = numeroEstados;
         this.alfabeto = alfabeto;
-
-        int i;
-        for (i = 0; i < alfabeto.length(); i++){
+        this.configuracoes = new ArrayList<>();
+        // Recebe a quantidade de estados e cria as configuracoes de acordo com os elementos do alfabeto
+        for (int i = 0; i < alfabeto.length; i++){
             Configuracao configuracao = new Configuracao();
+            configuracao.setestado_atual("q"+i);
+            configuracoes.add(configuracao);
         }
     }
 
-    public String getNome() {
-        return nome;
+    public List<Configuracao> getConfiguracoes() {
+        return configuracoes;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getAlfabeto() {
-        return alfabeto;
-    }
-
-    public void setEntrada(String entrada) {
-        this.alfabeto = entrada;
+    public void setConfiguracoes(List<Configuracao> configuracoes) {
+        this.configuracoes = configuracoes;
     }
 }

@@ -40,8 +40,8 @@ public class TelaInicial extends AppCompatActivity {
             public void onClick(View v) {
                 if (dialog.findViewById(R.id.check_minha_maquina).isEnabled()){
                     dialog.cancel();
-                }else  if (dialog.findViewById(R.id.check_maquina1).isEnabled()){
-                    Toast.makeText(TelaInicial.this, "Configurar maquina 1", Toast.LENGTH_SHORT).show();
+                }
+                if (dialog.findViewById(R.id.check_maquina1).isEnabled()){
                     Intent it = new Intent(TelaInicial.this, ConfiguraEstadosActivity.class);
                     it.putExtra("Maquina", "1");
                     startActivity(it);
