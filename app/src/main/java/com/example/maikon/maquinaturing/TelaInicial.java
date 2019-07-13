@@ -1,5 +1,7 @@
 package com.example.maikon.maquinaturing;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,6 +32,31 @@ public class TelaInicial extends AppCompatActivity {
         entradaAlfabFita = (EditText)findViewById(R.id.entAlfFita);     btnProximo = (Button)findViewById(R.id.btnProximo);
         entradaSigma = (EditText)findViewById(R.id.entradaSigma);       entradaConjEsta = (EditText)findViewById(R.id.entradaQ);
 
+        final Dialog dialog = new Dialog(TelaInicial.this);
+        // Include dialog.xml file
+        dialog.setContentView(R.layout.item_opcoes_inicial);
+        dialog.findViewById(R.id.btnConfigurar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dialog.findViewById(R.id.check_minha_maquina).isEnabled()){
+                    dialog.cancel();
+                }else  if (dialog.findViewById(R.id.check_maquina1).isEnabled()){
+                    Toast.makeText(TelaInicial.this, "Configurar maquina 1", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(TelaInicial.this, ConfiguraEstadosActivity.class);
+                    it.putExtra("Maquina", "1");
+                    startActivity(it);
+                }
+            }
+        });
+        dialog.findViewById(R.id.btnCancelar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        dialog.show();
+
+
     }
     public void tratamentoDeErros(View view){
 
@@ -49,6 +76,12 @@ public class TelaInicial extends AppCompatActivity {
             sigma = retiraVirgulas(entradaSigma.getText().toString().toCharArray());
             alfabeto = retiraVirgulas(entradaAlfabFita.getText().toString().toCharArray());
 
+            //  chamar activity de configuração e passar os valores para configurar
+            Intent it = new Intent(TelaInicial.this, ConfiguraEstadosActivity.class);
+            it.putExtra("Maquina", "0");
+            it.putExtra("Sigma", sigma);
+            it.putExtra("Alfabeto", alfabeto);
+            startActivity(it);
 
 
         }

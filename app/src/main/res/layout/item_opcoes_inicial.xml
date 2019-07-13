@@ -9,7 +9,7 @@
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view_conf_entr"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
@@ -21,14 +21,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/_conf_entr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="5dp"
                 android:gravity="center"
@@ -36,82 +36,80 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="19dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
 
-                    <CheckBox
-                        android:id="@+id/_valor_lido"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
                         android:gravity="center"
-                        android:text="Configurar minha propria maquina "
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="15dp" />
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/check_minha_maquina"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:text="Configurar minha propria maquina "
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/check_maquina1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:text="Reconhece uma sequência de 0 seguido de 1       "
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textSize="15dp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/_valor_escr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="center"
-                        android:text="Simular uma Máquina que reconhece \n uma sequência de 0 seguido de 1       "
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="15dp" />
-
-
-                </LinearLayout>
-
-              
-
 
             </LinearLayout>
-
-        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btnConfigurar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@drawable/capsule"
                     android:backgroundTint="@color/colorPrimary"
                     android:text="proximo"
@@ -119,7 +117,7 @@
 
                 <Button
                     android:id="@+id/btnCancelar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/capsule"
                     android:backgroundTint="@color/colorPrimary"
@@ -127,7 +125,6 @@
                     android:textColor="@color/branco" />
 
             </LinearLayout>
-
 
 
         </LinearLayout>

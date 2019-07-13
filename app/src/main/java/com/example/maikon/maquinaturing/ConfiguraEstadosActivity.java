@@ -1,6 +1,7 @@
 package com.example.maikon.maquinaturing;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.maikon.maquinaturing.Adapters.ItemEntradaAdapter;
 import com.example.maikon.maquinaturing.Classes.Configuracao;
@@ -32,6 +34,19 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
         escreve          = (TextView) findViewById(R.id.txtEscreve);                          checkEsq           = (CheckBox) findViewById(R.id.checkBoxEsq);
         vaiPara          = (TextView) findViewById(R.id.txtVaiPara);                          checkdir           = (CheckBox) findViewById(R.id.checkBoxDireita);
         flagDir          = 0;                                                                 flagEsq            = 0;
+
+        // Pegando informações da activity que iniciou as configurações
+        //Pega a intent de outra activity
+        Intent it = getIntent();
+        //Recuperei a string da outra activity
+        String maquina = it.getStringExtra("Maquina");
+        // Se for uma maquina pre configurada
+        if (maquina.equals("1")){
+            Toast.makeText(ConfiguraEstadosActivity.this, "configurada maquina: "+maquina, Toast.LENGTH_SHORT).show();
+        }else{
+            String sigma = it.getStringExtra("Sigma");
+            String alfabeto = it.getStringExtra("Alfabeto");
+        }
 
 
         adapter = new ItemEntradaAdapter(listElementoCriads, ConfiguraEstadosActivity.this);
