@@ -43,15 +43,43 @@ public class TelaInicial extends AppCompatActivity {
             getEntradaSigma = entradaSigma.getText().toString();    getEstados = entradaConjEsta.getText().toString();
             getAlfabFita = entradaAlfabFita.getText().toString();
                 // Verifica se a entrada e valida
-            //verificarEntradaCorreta();
+            if (verificarEntradaCorreta() == false) return;
                 // quebrando entrada em um vetor
-            char[] letras ;
-            letras = entradaSigma.getText().toString().toCharArray();
-                //retirando as virgulas
-            retiraVirgulas(letras);
+            char[] sigma, alfabeto ;
+            sigma = retiraVirgulas(entradaSigma.getText().toString().toCharArray());
+            alfabeto = retiraVirgulas(entradaAlfabFita.getText().toString().toCharArray());
+
+
 
         }
 
+    }
+
+    /*
+     *      A ideia dessa funcao e verificar se o usuario nao digitou uma entrada invalida
+     *      por exemplo dois caracteres seguidos sem virgula ou caracteres que nao pertecem
+     *      ao alfabeto
+     */
+    public boolean verificarEntradaCorreta(){
+        boolean flag = false;
+        // Salva as entradas em vetor de caracteres
+        char[] sigma = new char[entradaSigma.length()], alfFita = new char[entradaSigma.length()];
+        // Quebrando a String em caracteres
+        sigma = retiraVirgulas(entradaSigma.getText().toString().toCharArray());
+        alfFita = retiraVirgulas(entradaAlfabFita.getText().toString().toCharArray());
+        // Verificando se os simbolos da entrada fazem parte do alfabeto inserido
+        for (int i = 0; i < sigma.length; i++){
+            if (sigma[i] == alfFita[i]){
+                flag = true;
+            }else{
+                flag = false;
+            }
+        }
+        if (flag == false){
+            Toast.makeText(TelaInicial.this, "Sua entrada não faz parte do alfabeto", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     /*
@@ -70,18 +98,6 @@ public class TelaInicial extends AppCompatActivity {
 
         }
         return letrasSemVirgula;
-    }
-
-    /*
-     *      A ideia dessa funcao e verificar se o usuario nao digitou uma entrada invalida
-     *      por exemplo dois caracteres seguidos sem virgula ou caracteres que nao pertecem
-     *      ao alfabeto
-     */
-    public void verificarEntradaCorreta(){
-        // Salva as entradas em vetor de caracteres
-        char[] sigma = new char[entradaSigma.length()], alfFita = new char[entradaSigma.length()];
-        // Quebrando a String em caracteres
-        sigma = entradaSigma.getText().toString().toCharArray();
     }
 
 

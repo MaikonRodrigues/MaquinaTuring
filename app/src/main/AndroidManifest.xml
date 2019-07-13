@@ -24,7 +24,7 @@
 
         </activity>
 
-        <activity android:name=".CriaMaquina2Activity" />
+        <activity android:name=".ConfiguraEstadosActivity" />
 
         <activity
             android:name=".MainActivity">
