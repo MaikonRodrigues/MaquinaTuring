@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.maikon.maquinaturing.Adapters.ItemEntradaAdapter;
 import com.example.maikon.maquinaturing.Classes.Configuracao;
+import com.example.maikon.maquinaturing.Classes.Estado;
 import com.example.maikon.maquinaturing.Classes.Mt;
 
 import java.util.ArrayList;
@@ -30,12 +32,13 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configura_estados);
 
-        recyclerListConf = (RecyclerView) findViewById(R.id.my_recycler_view_conf_entra);     listElementoCriads = new ArrayList<Configuracao>();
+        recyclerListConf = (RecyclerView) findViewById(R.id.recycler_conf_entra);            listElementoCriads = new ArrayList<Configuracao>();
         btnNovoEstado    = (Button) findViewById(R.id.btnNovoEstado);                         ler                = (TextView) findViewById(R.id.txtLer);
         escreve          = (TextView) findViewById(R.id.txtEscreve);                          checkEsq           = (CheckBox) findViewById(R.id.checkBoxEsq);
         vaiPara          = (TextView) findViewById(R.id.txtVaiPara);                          checkdir           = (CheckBox) findViewById(R.id.checkBoxDireita);
         flagDir          = 0;                                                                 flagEsq            = 0;
 
+        recyclerListConf.setLayoutManager(new LinearLayoutManager(ConfiguraEstadosActivity.this ,LinearLayoutManager.VERTICAL, false));
         // Pegando informações da activity que iniciou as configurações
         //Pega a intent de outra activity
         Intent it = getIntent();
@@ -43,16 +46,12 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
         String maquina = it.getStringExtra("Maquina");
         // Se for uma maquina pre configurada
         if (maquina.equals("1")){
-            Toast.makeText(ConfiguraEstadosActivity.this, "configurada maquina: "+maquina, Toast.LENGTH_SHORT).show();
             configurarMaquina("1");
         }else{
             String sigma = it.getStringExtra("Sigma");
             String alfabeto = it.getStringExtra("Alfabeto");
         }
 
-
-        adapter = new ItemEntradaAdapter(listElementoCriads, ConfiguraEstadosActivity.this);
-        recyclerListConf.setAdapter(adapter);
 
         btnNovoEstado.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,12 +112,37 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
      */
     private void configurarMaquina(String s) {
 
-        Configuracao q0 = new Configuracao();
-        q0.setestado_atual("q0");
-        q0.setler("0");
-        q0.setEscreve("0");
-        q0.setVaiPara("q1");
 
+        if (s == "1"){
+
+            char[] alfabeto = {'0','1'};
+            List<Configuracao> configuracoes;
+            Estado estado = new Estado(2, alfabeto);
+            configuracoes = estado.getConfiguracoes();
+
+
+            Configuracao conf_q0_0 = configuracoes.get(0);      Configuracao conf_q1_0 = configuracoes.get(2);
+            Configuracao conf_q0_1 = configuracoes.get(1);      Configuracao conf_q1_1 = configuracoes.get(3);
+
+            conf_q0_0.setestado_atual("q0");        conf_q0_1.setestado_atual("q0");
+            conf_q0_0.setVaiPara("q1");             conf_q0_1.setVaiPara("rejeita");
+            conf_q0_0.setDirOuEsq(">");             conf_q0_1.setDirOuEsq(">");
+            conf_q0_0.setEscreve("0");              conf_q0_1.setEscreve("1");
+
+            conf_q1_0.setestado_atual("q1");        conf_q1_1.setestado_atual("q1");
+            conf_q1_0.setVaiPara("q1");             conf_q1_1.setVaiPara("aceita");
+            conf_q1_0.setDirOuEsq(">");             conf_q1_1.setDirOuEsq(">");
+            conf_q1_0.setEscreve("0");              conf_q1_1.setEscreve("1");
+
+            configuracoes.set(0, conf_q0_0);        configuracoes.set(2, conf_q1_0);
+            configuracoes.set(1, conf_q0_1);        configuracoes.set(3, conf_q1_1);
+
+            Toast.makeText(ConfiguraEstadosActivity.this, "tamanho da lista: "+configuracoes.size(), Toast.LENGTH_SHORT).show();
+
+            adapter = new ItemEntradaAdapter(configuracoes, ConfiguraEstadosActivity.this);
+            recyclerListConf.setAdapter(adapter);
+
+        }
 
         //-------------------------------------------------------------------------------------------------------
         String stringDeConfiguracao;

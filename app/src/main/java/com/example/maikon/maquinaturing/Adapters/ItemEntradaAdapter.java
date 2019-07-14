@@ -22,7 +22,6 @@ public class ItemEntradaAdapter extends RecyclerView.Adapter<ItemEntradaAdapter.
 
     List<Configuracao> listConfiguracao;
     Context context;
-    String id;
 
     public ItemEntradaAdapter(List<Configuracao> listConfiguracao, Context context){
         this.listConfiguracao = listConfiguracao;
@@ -41,9 +40,6 @@ public class ItemEntradaAdapter extends RecyclerView.Adapter<ItemEntradaAdapter.
     @Override
     public void onBindViewHolder(@NonNull final ItemFitaHolder itemFitaHolder, final int position) {
 
-       // id = listDesafio.get(position).getId();
-      //  bebHolder.campoNome.setText(listDesafio.get(position).getNome());
-      //  bebHolder.campoDuracao.setText(listDesafio.get(position).getDuracao());
         itemFitaHolder.aoLer.setText(String.valueOf(listConfiguracao.get(position).getler()));
         itemFitaHolder.escreve.setText(String.valueOf(listConfiguracao.get(position).getEscreve()));
         itemFitaHolder.proxEstado.setText(String.valueOf(listConfiguracao.get(position).getVaiPara()));

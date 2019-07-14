@@ -23,7 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     TextView txt, labeltxt;                             ItemKbcAdapter adapter2, adapterKbc;
-    Button btnRodar, btnPP, kkk;                             ItemFitaAdapter adapter, adapterFita;
+    Button btnRodar, btnPP, kkk;                        ItemFitaAdapter adapter, adapterFita;
     EditText entrada;                                   Mt maquina;
     int i, flag;                                        ScrollView scrollView;
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
