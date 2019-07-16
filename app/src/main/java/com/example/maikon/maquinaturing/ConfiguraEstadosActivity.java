@@ -17,13 +17,14 @@ import com.example.maikon.maquinaturing.Classes.Configuracao;
 import com.example.maikon.maquinaturing.Classes.Estado;
 import com.example.maikon.maquinaturing.Classes.Mt;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConfiguraEstadosActivity extends AppCompatActivity {
+public class ConfiguraEstadosActivity extends AppCompatActivity implements Serializable {
 
     RecyclerView recyclerListConf;                                   List<Configuracao> listElementoCriads;
-    Button btnNovoEstado, btnConfigurarEstado, cancelarConf;         TextView ler, escreve, vaiPara;
+    Button  btnFinalConf;         TextView ler, escreve, vaiPara;    List<Configuracao> configuracoes;
     CheckBox checkEsq, checkdir;                                     ItemEntradaAdapter adapter;
     int flagEsq, flagDir;
 
@@ -33,10 +34,11 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configura_estados);
 
         recyclerListConf = (RecyclerView) findViewById(R.id.recycler_conf_entra);            listElementoCriads = new ArrayList<Configuracao>();
-        btnNovoEstado    = (Button) findViewById(R.id.btnNovoEstado);                         ler                = (TextView) findViewById(R.id.txtLer);
+        ler                = (TextView) findViewById(R.id.txtLer);
         escreve          = (TextView) findViewById(R.id.txtEscreve);                          checkEsq           = (CheckBox) findViewById(R.id.checkBoxEsq);
         vaiPara          = (TextView) findViewById(R.id.txtVaiPara);                          checkdir           = (CheckBox) findViewById(R.id.checkBoxDireita);
         flagDir          = 0;                                                                 flagEsq            = 0;
+        btnFinalConf = (Button)findViewById(R.id.btnFinalConf);
 
         recyclerListConf.setLayoutManager(new LinearLayoutManager(ConfiguraEstadosActivity.this ,LinearLayoutManager.VERTICAL, false));
         // Pegando informações da activity que iniciou as configurações
@@ -47,66 +49,76 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
         // Se for uma maquina pre configurada
         if (maquina.equals("1")){
             configurarMaquina("1");
+            btnFinalConf.setText("Rodar Máquina");
         }else{
             String sigma = it.getStringExtra("Sigma");
             String alfabeto = it.getStringExtra("Alfabeto");
         }
-
-
-        btnNovoEstado.setOnClickListener(new View.OnClickListener() {
+        btnFinalConf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create custom dialog object
-                final Dialog dialog = new Dialog(ConfiguraEstadosActivity.this);
-                // Include dialog.xml file
-                dialog.setContentView(R.layout.item_entrada_valores);
-                dialog.findViewById(R.id.btnConfigurar).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                if (btnFinalConf.getText().equals("Rodar Máquina")){
+                    Intent it = new Intent(ConfiguraEstadosActivity.this, MainActivity.class);
+                    it.putExtra("configuracoes", (Serializable) configuracoes);
+                    startActivity(it);
+                }
+            }
+        });
+    }
 
-                    }
-                });
-                dialog.findViewById(R.id.btnCancelar).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.cancel();
-                    }
-                });
-                dialog.show();
+    /*
+     *      Função que configura estados
+     */
+    public void configurarNovoEstado(){
 
-                dialog.findViewById(R.id.checkBoxEsq).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (flagEsq == 1){
-                            dialog.findViewById(R.id.checkBoxDireita).setEnabled(true);
-                            flagEsq = 0;
-                        }else if (flagEsq == 0){
-                            dialog.findViewById(R.id.checkBoxDireita).setEnabled(false);
-                            flagEsq = 1;
-                        }
 
-                    }
-                });
 
-                dialog.findViewById(R.id.checkBoxDireita).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (flagDir == 1){
-                            dialog.findViewById(R.id.checkBoxEsq).setEnabled(true);
-                            flagDir = 0;
-                        }else if (flagDir == 0){
-                            dialog.findViewById(R.id.checkBoxEsq).setEnabled(false);
-                            flagDir = 1;
-                        }
-                    }
-                });
+        // Create custom dialog object
+        final Dialog dialog = new Dialog(ConfiguraEstadosActivity.this);
+        // Include dialog.xml file
+        dialog.setContentView(R.layout.item_entrada_valores);
+        dialog.findViewById(R.id.btnConfigurar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
+        });
+        dialog.findViewById(R.id.btnCancelar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        dialog.show();
 
+        dialog.findViewById(R.id.checkBoxEsq).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flagEsq == 1){
+                    dialog.findViewById(R.id.checkBoxDireita).setEnabled(true);
+                    flagEsq = 0;
+                }else if (flagEsq == 0){
+                    dialog.findViewById(R.id.checkBoxDireita).setEnabled(false);
+                    flagEsq = 1;
+                }
+
+            }
+        });
+
+        dialog.findViewById(R.id.checkBoxDireita).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flagDir == 1){
+                    dialog.findViewById(R.id.checkBoxEsq).setEnabled(true);
+                    flagDir = 0;
+                }else if (flagDir == 0){
+                    dialog.findViewById(R.id.checkBoxEsq).setEnabled(false);
+                    flagDir = 1;
+                }
+            }
         });
 
     }
-
     /*
      *  Metodo configura altomaticamente a maquina do tipo 1 (reconhece uma sequencia de 0s seguido de 1
      */
@@ -116,7 +128,6 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
         if (s == "1"){
 
             char[] alfabeto = {'0','1'};
-            List<Configuracao> configuracoes;
             Estado estado = new Estado(2, alfabeto);
             configuracoes = estado.getConfiguracoes();
 
@@ -139,7 +150,7 @@ public class ConfiguraEstadosActivity extends AppCompatActivity {
 
             Toast.makeText(ConfiguraEstadosActivity.this, "tamanho da lista: "+configuracoes.size(), Toast.LENGTH_SHORT).show();
 
-            adapter = new ItemEntradaAdapter(configuracoes, ConfiguraEstadosActivity.this);
+            adapter = new ItemEntradaAdapter(configuracoes, ConfiguraEstadosActivity.this, true);
             recyclerListConf.setAdapter(adapter);
 
         }

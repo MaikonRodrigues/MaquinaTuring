@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.maikon.maquinaturing.Adapters.ItemFitaAdapter;
 import com.example.maikon.maquinaturing.Adapters.ItemKbcAdapter;
+import com.example.maikon.maquinaturing.Classes.Configuracao;
 import com.example.maikon.maquinaturing.Classes.ElementoFita;
 import com.example.maikon.maquinaturing.Classes.Mt;
 
@@ -29,12 +30,17 @@ public class MainActivity extends AppCompatActivity {
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
     ElementoFita elementoFita;                          List<ElementoFita> listElementoFita, listElementoKbcFita;
     View mView;                                         Intent intent;
+    List<Configuracao> configuracoes;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Pegando a lista de configuracoes
+        Intent it = getIntent();
+        configuracoes = (List<Configuracao>) it.getSerializableExtra("configuracoes");
 
         flag = 0;   kkk = (Button)findViewById(R.id.kkk);
         recyclerListKbc  = (RecyclerView) findViewById(R.id.my_recycler_view_cab_fita);
