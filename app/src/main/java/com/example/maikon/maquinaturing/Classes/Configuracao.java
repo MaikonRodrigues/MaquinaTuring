@@ -4,7 +4,9 @@ package com.example.maikon.maquinaturing.Classes;
  *      Classe para instanciar objetos que conterá as configurações da entrada
  */
 
-public class Configuracao {
+import java.io.Serializable;
+
+public class Configuracao implements Serializable {
     String estado_atual, ler, escreve, vaiPara, dirOuEsq;
 
     public Configuracao(String estado_atual, String ler, String escreve, String vaiPara, String dirOuEsq) {

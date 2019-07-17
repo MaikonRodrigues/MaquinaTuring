@@ -24,9 +24,9 @@ import java.util.List;
 public class ConfiguraEstadosActivity extends AppCompatActivity implements Serializable {
 
     RecyclerView recyclerListConf;                                   List<Configuracao> listElementoCriads;
-    Button  btnFinalConf;         TextView ler, escreve, vaiPara;    List<Configuracao> configuracoes;
+    Button  btnFinalConf;                                            List<Configuracao> configuracoes;
     CheckBox checkEsq, checkdir;                                     ItemEntradaAdapter adapter;
-    int flagEsq, flagDir;
+    int flagEsq, flagDir;                                            TextView ler, escreve, vaiPara;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +48,11 @@ public class ConfiguraEstadosActivity extends AppCompatActivity implements Seria
         String maquina = it.getStringExtra("Maquina");
         // Se for uma maquina pre configurada
         if (maquina.equals("1")){
+            //configura o Layout com as configuraçoes da maquina 1
             configurarMaquina("1");
             btnFinalConf.setText("Rodar Máquina");
         }else{
+            // se nao e uma maquina pre configurada pego as informaçoes da outra activity
             String sigma = it.getStringExtra("Sigma");
             String alfabeto = it.getStringExtra("Alfabeto");
         }
@@ -59,6 +61,7 @@ public class ConfiguraEstadosActivity extends AppCompatActivity implements Seria
             public void onClick(View v) {
                 if (btnFinalConf.getText().equals("Rodar Máquina")){
                     Intent it = new Intent(ConfiguraEstadosActivity.this, MainActivity.class);
+                    it.putExtra("mtPreConf", "1");
                     it.putExtra("configuracoes", (Serializable) configuracoes);
                     startActivity(it);
                 }

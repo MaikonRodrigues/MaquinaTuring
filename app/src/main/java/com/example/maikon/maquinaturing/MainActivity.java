@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.maikon.maquinaturing.Adapters.ItemFitaAdapter;
 import com.example.maikon.maquinaturing.Adapters.ItemKbcAdapter;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     int i, flag;                                        ScrollView scrollView;
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
     ElementoFita elementoFita;                          List<ElementoFita> listElementoFita, listElementoKbcFita;
-    View mView;                                         Intent intent;
+    View mView;                                         Intent intent, it;
     List<Configuracao> configuracoes;
 
 
@@ -39,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Pegando a lista de configuracoes
-        Intent it = getIntent();
+        it = getIntent();
         configuracoes = (List<Configuracao>) it.getSerializableExtra("configuracoes");
+
+
 
         flag = 0;   kkk = (Button)findViewById(R.id.kkk);
         recyclerListKbc  = (RecyclerView) findViewById(R.id.my_recycler_view_cab_fita);
@@ -58,13 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         // configurando a fita vazia
         fitaConfInicial();
-        kkk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(MainActivity.this, ConfiguraEstadosActivity.class);
-                startActivity(it);
-            }
-        });
+
 
         btnRodar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
                         "\n q1,1"   +
                         "\n Aceita,1,>" );
+
+                //  verificando se e uma maquina pre configurada
+                if (it.getStringExtra("mtPreConf").equals("1")){
+                    if (maquina.estadoAtual == configuracoes.get(0).getestado_atual()){
+                        
+                    }
+                }
 
 
                 String strings = entrada.getText().toString();
@@ -123,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 maquina.rodar();
+
+
 
                 txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
