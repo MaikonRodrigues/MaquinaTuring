@@ -57,6 +57,8 @@ public class ItemFitaAdapter extends RecyclerView.Adapter<ItemFitaAdapter.ItemFi
                 itemFitaHolder.simboloDoItem.setText(String.valueOf(listElementos.get(position).getValorElemento()));
         }
 
+
+
     }
 
     @Override

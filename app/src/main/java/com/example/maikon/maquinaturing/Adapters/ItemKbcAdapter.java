@@ -56,6 +56,13 @@ public class ItemKbcAdapter extends RecyclerView.Adapter<ItemKbcAdapter.ItemFita
             itemFitaHolder.simboloDoItem.setText(listElementos.get(position).getValorCabeca());
         }
 
+        itemFitaHolder.card_viewCabFita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "CardView N: "+ position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override

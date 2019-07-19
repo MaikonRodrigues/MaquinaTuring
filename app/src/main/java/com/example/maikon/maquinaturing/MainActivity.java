@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
     TextView txt, labeltxt;                             ItemKbcAdapter adapter2, adapterKbc;
     Button btnRodar, btnPP, kkk;                        ItemFitaAdapter adapter, adapterFita;
     EditText entrada;                                   Mt maquina;
-    int i, flag;                                        ScrollView scrollView;
+    int i, flag, flagMoveScrowBack,flagMoveScrowNext;ScrollView scrollView;
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
     ElementoFita elementoFita;                          List<ElementoFita> listElementoFita, listElementoKbcFita;
-                                                        Intent intent, it;
+    int visivel = 0;                                    Intent intent, it;
     List<Configuracao> configuracoes;
 
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        flagMoveScrowBack = 0; flagMoveScrowNext = 0;
         // Pegando a lista de configuracoes
         it = getIntent();
         configuracoes = (List<Configuracao>) it.getSerializableExtra("configuracoes");
@@ -135,8 +136,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 maquina.rodar();
+
+                flagMoveScrowNext++;
                 // Pegando a posição do intem que esta visivel
-                int visivel = 0;
+
                 for (int i = 0; i < listElementoKbcFita.size(); i++){
                     if (listElementoKbcFita.get(i).isVisivel()){
                         visivel = listElementoKbcFita.get(i).getPosicao();
@@ -152,9 +155,11 @@ public class MainActivity extends AppCompatActivity {
                     listElementoKbcFita.get(visivel + 1).setValorCabeca(maquina.estadoAtual);
 
                     // configurando movimento das fitas conforme o movimento da cabeça
-                    if (visivel > 4){
+                    if (flagMoveScrowNext == 4){
                         moveScroll(3);
-                    }else if (visivel < 4){
+                        flagMoveScrowBack = 1;
+
+                    }else if (flagMoveScrowBack == 2 && flagMoveScrowBack == 1){
                         moveScroll(1);
                     }
 
@@ -166,8 +171,8 @@ public class MainActivity extends AppCompatActivity {
                     listElementoKbcFita.get(visivel).setVisivel(false);
                     listElementoKbcFita.get(visivel - 1).setVisivel(true);
                     recyclerListKbc.setAdapter(adapter2);
+                    flagMoveScrowNext--; flagMoveScrowBack = 0;
                 }
-
 
 
                 txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
@@ -198,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
         // seta a posicao do scrow
         staggeredGridLayoutManager.scrollToPosition(position);
-        recyclerListElement.setLayoutManager(staggeredGridLayoutManager);
-        //recyclerListKbc.setLayoutManager(staggeredGridLayoutManager);
+        //recyclerListElement.setLayoutManager(staggeredGridLayoutManager);
+        recyclerListKbc.setLayoutManager(staggeredGridLayoutManager);
     }
 
     /*
