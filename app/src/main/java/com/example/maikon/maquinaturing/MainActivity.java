@@ -1,5 +1,6 @@
 package com.example.maikon.maquinaturing;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         it = getIntent();
         configuracoes = (List<Configuracao>) it.getSerializableExtra("configuracoes");
 
-
-
         flag = 0;   kkk = (Button)findViewById(R.id.kkk);
         recyclerListKbc  = (RecyclerView) findViewById(R.id.my_recycler_view_cab_fita);
         recyclerListElement = (RecyclerView) findViewById(R.id.my_recycler_view_listEnd);
@@ -71,31 +70,30 @@ public class MainActivity extends AppCompatActivity {
                 btnRodar.setVisibility(View.INVISIBLE);     maquina.setFita(entrada.getText().toString());
                 entrada.setVisibility(View.INVISIBLE);
 
-                maquina.compilar("init: q0" + "\n accept: Aceita" + // Configurando estado aceitacao e rejeicao
-                        "\n" +
-
-                        "\n q0,0"        +         //  estado atual, valor lido
-                        "\n q1,0,>"      +        //  novo estado,  valor escrito, direcao
-                        "\n"             +
-
-                        "\n q0,1"        +
-                        "\n Rejeita,1,>" +
-                        "\n"             +
-
-                        "\n q1,0"        +
-                        "\n q1,0,>"      +
-                        "\n"             +
-
-                        "\n q1,1"   +
-                        "\n Aceita,1,>" );
-
                 //  verificando se e uma maquina pre configurada
                 if (it.getStringExtra("mtPreConf").equals("1")){
-                    if (maquina.estadoAtual == configuracoes.get(0).getestado_atual()){
-                        
-                    }
+                    maquina.compilar("init: q0" + "\n accept: Aceita" + // Configurando estado aceitacao e rejeicao
+                            "\n" +
+
+                            "\n q0,0"        +         //  estado atual, valor lido
+                            "\n q1,0,>"      +        //  novo estado,  valor escrito, direcao
+                            "\n"             +
+
+                            "\n q0,1"        +
+                            "\n Rejeita,1,>" +
+                            "\n"             +
+
+                            "\n q1,0"        +
+                            "\n q1,0,>"      +
+                            "\n"             +
+
+                            "\n q1,1"   +
+                            "\n Aceita,1,>" );
+                }else if (it.getStringExtra("mtPreConf").equals("1")){
+                    // configuraçoes da segunda maquina
                 }
 
+                txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
                 String strings = entrada.getText().toString();
                 entradasArray = strings.toCharArray();
@@ -113,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 adapter2 = new ItemKbcAdapter(listElementoKbcFita, MainActivity.this);
-                adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this);
+                adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this, "0");
                 recyclerListElement.setAdapter(adapter);
                 recyclerListKbc.setAdapter(adapter2);
 
@@ -128,7 +126,12 @@ public class MainActivity extends AppCompatActivity {
 
                 maquina.rodar();
 
-
+                //  verificando se e uma maquina pre configurada
+                if (it.getStringExtra("mtPreConf").equals("1")){
+                    if (maquina.estadoAtual == configuracoes.get(0).getestado_atual()){
+                        adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this, "1");
+                    }
+                }
 
                 txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
@@ -185,11 +188,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
         adapterKbc = new ItemKbcAdapter(listElementoCab, MainActivity.this);
-        adapterFita = new ItemFitaAdapter(listElementoFitaInit, MainActivity.this);
+        adapterFita = new ItemFitaAdapter(listElementoFitaInit, MainActivity.this, "0");
         recyclerListElement.setAdapter(adapterFita);
         recyclerListKbc.setAdapter(adapterKbc);
 
     }
+
+
 
 
 
