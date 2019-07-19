@@ -52,8 +52,9 @@ public class ItemKbcAdapter extends RecyclerView.Adapter<ItemKbcAdapter.ItemFita
 
         if (listElementos.get(position).isVisivel() == false){
             limpaItem(itemFitaHolder);
+        }else  if (listElementos.get(position).isVisivel() == true) {
+            itemFitaHolder.simboloDoItem.setText(listElementos.get(position).getValorCabeca());
         }
-
 
     }
 

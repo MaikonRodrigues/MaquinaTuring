@@ -16,7 +16,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4896ffe-577a-4103-82d9-cdff637f1ca3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/android/animation/annotations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -26,8 +25,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemFitaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemFitaAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemKbcAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemKbcAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/ElementoFita.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/ElementoFita.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,15 +81,24 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="131" column="93" selection-start-line="131" selection-start-column="93" selection-end-line="131" selection-end-column="93" />
+            <state relative-caret-position="386">
+              <caret line="160" column="78" selection-start-line="160" selection-start-column="78" selection-end-line="160" selection-end-column="78" />
               <folding>
                 <element signature="e#3023#5443#0" expanded="true" />
                 <element signature="e#5442#5443#0" expanded="true" />
-                <element signature="e#5480#6757#0" expanded="true" />
-                <element signature="e#6756#6757#0" expanded="true" />
-                <element signature="method#moveScroll#0;class#MainActivity#0" />
+                <element signature="e#6145#8606#0" expanded="true" />
+                <element signature="e#8605#8606#0" expanded="true" />
+                <element signature="method#fitaConfInicial#0;class#MainActivity#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ElementoFita.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/ElementoFita.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -98,8 +106,8 @@
       <file leaf-file-name="ItemFitaAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemFitaAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="48" column="30" lean-forward="true" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+            <state relative-caret-position="495">
+              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
               <folding>
                 <element signature="e#2324#2325#0" expanded="true" />
                 <element signature="e#2367#2368#0" expanded="true" />
@@ -115,8 +123,13 @@
       <file leaf-file-name="ItemKbcAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemKbcAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+            <state relative-caret-position="138">
+              <caret line="55" column="49" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+              <folding>
+                <element signature="e#2132#2133#0" expanded="true" />
+                <element signature="e#2175#2176#0" expanded="true" />
+                <element signature="method#InserirItem#0;class#ItemKbcAdapter#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,7 +149,7 @@
       <file leaf-file-name="ItemEntradaAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemEntradaAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
+            <state relative-caret-position="195">
               <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
             </state>
           </provider>
@@ -2465,7 +2478,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_fita.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_kbc_fita.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/ElementoFita.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/capsule.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_entrada_valores.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/CriaMaquina2Activity.java" />
@@ -2483,9 +2495,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_configura_estados.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/Configuracao.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/ConfiguraEstadosActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemFitaAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/ElementoFita.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemKbcAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemFitaAdapter.java" />
       </list>
     </option>
   </component>
@@ -2760,7 +2773,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -2972,13 +2985,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/ElementoFita.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/capsule.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -3093,13 +3099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemEntradaAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/ConfiguraEstadosActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -3134,17 +3133,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemKbcAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Classes/ElementoFita.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+        <state relative-caret-position="240">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemFitaAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="48" column="30" lean-forward="true" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+        <state relative-caret-position="495">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
           <folding>
             <element signature="e#2324#2325#0" expanded="true" />
             <element signature="e#2367#2368#0" expanded="true" />
@@ -3156,16 +3155,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemEntradaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/Adapters/ItemKbcAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="55" column="49" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+          <folding>
+            <element signature="e#2132#2133#0" expanded="true" />
+            <element signature="e#2175#2176#0" expanded="true" />
+            <element signature="method#InserirItem#0;class#ItemKbcAdapter#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/maikon/maquinaturing/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="131" column="93" selection-start-line="131" selection-start-column="93" selection-end-line="131" selection-end-column="93" />
+        <state relative-caret-position="386">
+          <caret line="160" column="78" selection-start-line="160" selection-start-column="78" selection-end-line="160" selection-end-column="78" />
           <folding>
             <element signature="e#3023#5443#0" expanded="true" />
             <element signature="e#5442#5443#0" expanded="true" />
-            <element signature="e#5480#6757#0" expanded="true" />
-            <element signature="e#6756#6757#0" expanded="true" />
-            <element signature="method#moveScroll#0;class#MainActivity#0" />
+            <element signature="e#6145#8606#0" expanded="true" />
+            <element signature="e#8605#8606#0" expanded="true" />
+            <element signature="method#fitaConfInicial#0;class#MainActivity#0" />
           </folding>
         </state>
       </provider>

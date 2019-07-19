@@ -2,6 +2,7 @@ package com.example.maikon.maquinaturing.Classes;
 
 public class ElementoFita {
 
+    String valorCabeca;
     char valorElemento;
     int posicao;
     boolean visivel;
@@ -9,10 +10,19 @@ public class ElementoFita {
     public ElementoFita() {
     }
 
-    public ElementoFita(char valorElemento, int posicao, boolean visivel) {
+    public ElementoFita(char valorElemento, int posicao, boolean visivel, String valorCabeca) {
         this.valorElemento = valorElemento;
         this.posicao = posicao;
         this.visivel = visivel;
+        this.valorCabeca = valorCabeca;
+    }
+
+    public String getValorCabeca() {
+        return valorCabeca;
+    }
+
+    public void setValorCabeca(String valorCabeca) {
+        this.valorCabeca = valorCabeca;
     }
 
     public char getValorElemento() {

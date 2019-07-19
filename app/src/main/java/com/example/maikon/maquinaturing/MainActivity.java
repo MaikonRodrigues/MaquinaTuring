@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     int i, flag;                                        ScrollView scrollView;
     char[] entradasArray = null;                        RecyclerView recyclerListElement, recyclerListKbc;
     ElementoFita elementoFita;                          List<ElementoFita> listElementoFita, listElementoKbcFita;
-    View mView;                                         Intent intent, it;
+                                                        Intent intent, it;
     List<Configuracao> configuracoes;
 
 
@@ -99,11 +99,21 @@ public class MainActivity extends AppCompatActivity {
                 entradasArray = strings.toCharArray();
 
                 // laco para add os itens da entrada na lista de itens da fita
-                for (i = 0; i < (entrada.getText().toString().length()); i++){
-                    elementoFita = new ElementoFita();
-                    elementoFita.setValorElemento(entradasArray[i]);
-                    elementoFita.setPosicao(i);
-                    if (i > 0) elementoFita.setVisivel(false); else elementoFita.setVisivel(true);
+                for (i = 0; i < (entrada.getText().length() + 5); i++){
+                    if (i < entrada.length()){
+                        // Adiciona os elementos da entrada na fita
+                        elementoFita = new ElementoFita();
+                        elementoFita.setValorElemento(entradasArray[i]);
+                        elementoFita.setPosicao(i);
+                    }else{
+                        // Cria 5 elementos vazios a mais para simular a fita infinita
+                        elementoFita = new ElementoFita();
+                        elementoFita.setValorElemento('U');
+                        elementoFita.setPosicao(i);
+                    }
+
+                    // Setando valor do estado da cabeca
+                    if (i > 0) elementoFita.setVisivel(false); else elementoFita.setVisivel(true); elementoFita.setValorCabeca("q0");
                     listElementoFita.add(elementoFita);
                     listElementoKbcFita.add(elementoFita);
                     flag = i;
@@ -125,13 +135,40 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 maquina.rodar();
-
-                //  verificando se e uma maquina pre configurada
-                if (it.getStringExtra("mtPreConf").equals("1")){
-                    if (maquina.estadoAtual == configuracoes.get(0).getestado_atual()){
-                        adapter = new ItemFitaAdapter(listElementoFita, MainActivity.this, "1");
+                // Pegando a posição do intem que esta visivel
+                int visivel = 0;
+                for (int i = 0; i < listElementoKbcFita.size(); i++){
+                    if (listElementoKbcFita.get(i).isVisivel()){
+                        visivel = listElementoKbcFita.get(i).getPosicao();
                     }
                 }
+
+
+                // configurando movimento da cabeca
+                if (configuracoes.get(visivel).getDirOuEsq().equals(">")){
+                    listElementoKbcFita.get(visivel).setVisivel(false);
+                    listElementoKbcFita.get(visivel + 1).setVisivel(true);
+                    // configurando valores dos estados da cabeça
+                    listElementoKbcFita.get(visivel + 1).setValorCabeca(maquina.estadoAtual);
+
+                    // configurando movimento das fitas conforme o movimento da cabeça
+                    if (visivel > 4){
+                        moveScroll(3);
+                    }else if (visivel < 4){
+                        moveScroll(1);
+                    }
+
+                    // Configurar scrow pois a posicao muda ao deslisar a fita
+
+                    // Enviando valor para o adapter atualizar a lista
+                    recyclerListKbc.setAdapter(adapter2);
+                }else if (configuracoes.get(visivel).getDirOuEsq().equals("<")){
+                    listElementoKbcFita.get(visivel).setVisivel(false);
+                    listElementoKbcFita.get(visivel - 1).setVisivel(true);
+                    recyclerListKbc.setAdapter(adapter2);
+                }
+
+
 
                 txt.setText("Estado Atual: "+(maquina.estadoAtual)+"\n Número de Passos: "+ maquina.getPassos());
 
@@ -139,8 +176,6 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
-
-
                 if (maquina.estadoAtual.equals("Aceita") && flag < entrada.length()){
                     btnPP.setText("reiniciar");
                    flag++;
@@ -156,13 +191,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+     *  Funcao Move os itens da fita conforme a entrada
+     */
     public void moveScroll(int position){
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
         // seta a posicao do scrow
         staggeredGridLayoutManager.scrollToPosition(position);
         recyclerListElement.setLayoutManager(staggeredGridLayoutManager);
+        //recyclerListKbc.setLayoutManager(staggeredGridLayoutManager);
     }
 
+    /*
+     *  Funcao configura as listas vazias
+     */
     public void fitaConfInicial(){
             // Crio dois objeto do tipo ElementoFita
         ElementoFita elementoFitaInic;
@@ -191,6 +233,8 @@ public class MainActivity extends AppCompatActivity {
         adapterFita = new ItemFitaAdapter(listElementoFitaInit, MainActivity.this, "0");
         recyclerListElement.setAdapter(adapterFita);
         recyclerListKbc.setAdapter(adapterKbc);
+
+
 
     }
 
