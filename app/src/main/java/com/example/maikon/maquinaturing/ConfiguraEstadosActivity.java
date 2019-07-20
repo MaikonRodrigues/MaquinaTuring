@@ -151,7 +151,7 @@ public class ConfiguraEstadosActivity extends AppCompatActivity implements Seria
             configuracoes.set(0, conf_q0_0);        configuracoes.set(2, conf_q1_0);
             configuracoes.set(1, conf_q0_1);        configuracoes.set(3, conf_q1_1);
 
-            Toast.makeText(ConfiguraEstadosActivity.this, "tamanho da lista: "+configuracoes.size(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(ConfiguraEstadosActivity.this, "tamanho da lista: "+configuracoes.size(), Toast.LENGTH_SHORT).show();
 
             adapter = new ItemEntradaAdapter(configuracoes, ConfiguraEstadosActivity.this, true);
             recyclerListConf.setAdapter(adapter);

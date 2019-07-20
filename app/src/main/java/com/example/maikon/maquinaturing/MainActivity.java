@@ -138,14 +138,17 @@ public class MainActivity extends AppCompatActivity {
                 maquina.rodar();
 
                 flagMoveScrowNext++;
-                // Pegando a posição do intem que esta visivel
 
-                for (int i = 0; i < listElementoKbcFita.size(); i++){
+                //Toast.makeText(MainActivity.this, "flag: "+flagMoveScrowNext, Toast.LENGTH_SHORT).show();
+
+                // Pegando a posição do intem que esta visivel
+                for (int i = 0; i < listElementoKbcFita.size() ; i++){
                     if (listElementoKbcFita.get(i).isVisivel()){
                         visivel = listElementoKbcFita.get(i).getPosicao();
                     }
                 }
 
+                //
 
                 // configurando movimento da cabeca
                 if (configuracoes.get(visivel).getDirOuEsq().equals(">")){
@@ -167,11 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
                     // Enviando valor para o adapter atualizar a lista
                     recyclerListKbc.setAdapter(adapter2);
-                }else if (configuracoes.get(visivel).getDirOuEsq().equals("<")){
-                    listElementoKbcFita.get(visivel).setVisivel(false);
-                    listElementoKbcFita.get(visivel - 1).setVisivel(true);
-                    recyclerListKbc.setAdapter(adapter2);
-                    flagMoveScrowNext--; flagMoveScrowBack = 0;
                 }
 
 
@@ -201,10 +199,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public void moveScroll(int position){
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
+        StaggeredGridLayoutManager staggeredGridLayoutManager1 = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
         // seta a posicao do scrow
         staggeredGridLayoutManager.scrollToPosition(position);
+        staggeredGridLayoutManager1.scrollToPosition(position);
         //recyclerListElement.setLayoutManager(staggeredGridLayoutManager);
         recyclerListKbc.setLayoutManager(staggeredGridLayoutManager);
+        recyclerListElement.setLayoutManager(staggeredGridLayoutManager1);
     }
 
     /*
